@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Andrew Salter</title>
+        <link>https://andysalt.me</link>
+        <description>Building AI for investment research</description>
+        <language>en-us</language>
+        
+        <item>
+            <title>Hello World - Building in Public</title>
+            <link>https://andysalt.me/posts/hello-world.html</link>
+            <guid>https://andysalt.me/posts/hello-world.html</guid>
+            <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
+            <description>Starting a new chapter of building AI for investment research and sharing the journey.</description>
+        </item>
+    </channel>
+</rss>
