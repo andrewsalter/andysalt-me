@@ -34,23 +34,24 @@ const postTemplate = (post, content) => `<!DOCTYPE html>
     
     <link rel="canonical" href="https://andysalt.me/posts/${post.slug}.html">
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👋</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <style>
-        .post-content { margin-top: 2rem; }
-        .post-content h1 { font-size: 2rem; margin: 2rem 0 1rem; }
-        .post-content h2 { font-size: 1.5rem; margin: 1.5rem 0 0.75rem; }
-        .post-content h3 { font-size: 1.2rem; margin: 1.25rem 0 0.5rem; }
-        .post-content p { margin-bottom: 1rem; color: var(--text-secondary); }
-        .post-content a { color: var(--accent); text-decoration: none; }
-        .post-content a:hover { text-decoration: underline; }
-        .post-content ul, .post-content ol { margin: 1rem 0 1rem 2rem; color: var(--text-secondary); }
-        .post-content li { margin-bottom: 0.5rem; }
-        .post-content code { background: var(--bg-card); padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; font-family: var(--font-mono); }
-        .post-content pre { background: var(--bg-card); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; border: 1px solid var(--border); }
+        article { padding: calc(var(--spacing) * 12) 0 calc(var(--spacing) * 6) 0; }
+        article h1 { font-size: 1.875rem; font-weight: 700; margin-bottom: calc(var(--spacing) * 8); line-height: 1.2; }
+        .post-meta { font-size: 0.875rem; font-style: italic; opacity: 0.8; margin-bottom: calc(var(--spacing) * 8); padding-bottom: calc(var(--spacing) * 4); border-bottom: 1px solid var(--border); }
+        .post-content { line-height: 1.75; opacity: 0.9; }
+        .post-content h2 { font-size: 1.5rem; font-weight: 700; margin: calc(var(--spacing) * 8) 0 calc(var(--spacing) * 4) 0; }
+        .post-content h3 { font-size: 1.25rem; font-weight: 600; margin: calc(var(--spacing) * 6) 0 calc(var(--spacing) * 3) 0; }
+        .post-content p { margin-bottom: calc(var(--spacing) * 5); }
+        .post-content a { color: var(--accent); text-decoration: underline; text-decoration-style: dashed; text-underline-offset: 4px; }
+        .post-content a:hover { color: var(--accent); }
+        .post-content ul, .post-content ol { margin: calc(var(--spacing) * 5) 0; padding-left: calc(var(--spacing) * 7); }
+        .post-content li { margin-bottom: calc(var(--spacing) * 2); }
+        .post-content code { background: var(--muted); padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.875em; }
+        .post-content pre { background: var(--muted); padding: calc(var(--spacing) * 4); border-radius: 6px; overflow-x: auto; margin: calc(var(--spacing) * 5) 0; border: 1px solid var(--border); }
         .post-content pre code { background: none; padding: 0; }
-        .post-content blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1rem 0; color: var(--text-secondary); font-style: italic; }
-        .post-content img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
-        .post-meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+        .post-content blockquote { border-left: 3px solid var(--accent); padding-left: calc(var(--spacing) * 4); margin: calc(var(--spacing) * 5) 0; opacity: 0.8; font-style: italic; }
+        .post-content img { max-width: 100%; height: auto; border-radius: 6px; margin: calc(var(--spacing) * 5) 0; border: 1px solid var(--border); }
     </style>
 </head>
 <body>
@@ -59,8 +60,8 @@ const postTemplate = (post, content) => `<!DOCTYPE html>
             <nav>
                 <a href="/" class="nav-home">Andrew Salter</a>
                 <div class="nav-links">
-                    <a href="/#about">About</a>
                     <a href="/#posts">Posts</a>
+                    <a href="/#about">About</a>
                 </div>
             </nav>
         </header>
@@ -74,8 +75,8 @@ const postTemplate = (post, content) => `<!DOCTYPE html>
                 <div class="post-content">
                     ${content}
                 </div>
-                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);">
-                    <a href="/#posts" style="color: var(--accent); text-decoration: none;">← Back to all posts</a>
+                <div style="margin-top: calc(var(--spacing) * 12); padding-top: calc(var(--spacing) * 6); border-top: 1px solid var(--border);">
+                    <a href="/#posts">← Back to all posts</a>
                 </div>
             </article>
         </main>
@@ -145,13 +146,17 @@ function buildBlog() {
 
     // Generate posts HTML for index page
     const postsHtml = posts.map(post => `
-                <article class="post-preview">
+                <li>
                     <a href="/posts/${post.slug}.html">
                         <h3>${post.title}</h3>
-                        <time>${formatDate(post.date)}</time>
-                        ${post.description ? `<p>${post.description}</p>` : ''}
                     </a>
-                </article>`).join('\n');
+                    <div class="post-meta">
+                        <time datetime="${post.date}">${formatDate(post.date)}</time>
+                    </div>
+                    ${post.description ? `<p class="post-description">${post.description}</p>` : ''}
+                </li>`).join('\n');
+    
+    const postsHtmlWrapped = `<ul>${postsHtml}</ul>`;
 
     // Generate RSS feed
     const rssItems = posts.map(post => `
@@ -184,7 +189,7 @@ function buildBlog() {
 
     console.log(`\n✨ Built ${posts.length} post(s)\n`);
 
-    return { posts, postsHtml, rss, sitemapEntries };
+    return { posts, postsHtml: postsHtmlWrapped, rss, sitemapEntries };
 }
 
 // Update index.html with posts
