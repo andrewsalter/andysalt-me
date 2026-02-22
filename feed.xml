@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Andrew Salter</title>
+        <link>https://andysalt.me</link>
+        <description>Building AI for investment research</description>
+        <language>en-us</language>
+        
+        <item>
+            <title>Test Post</title>
+            <link>https://andysalt.me/posts/test-post.html</link>
+            <guid>https://andysalt.me/posts/test-post.html</guid>
+            <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
+            <description>Testing the blog build system</description>
+        </item>
+    </channel>
+</rss>
