@@ -3,13 +3,9 @@
   "version": "1.0.0",
   "description": "Andrew Salter's personal website",
   "scripts": {
-    "build": "node build.js",
     "dev": "python3 -m http.server 8000"
   },
-  "dependencies": {
-    "marked": "^11.2.0",
-    "gray-matter": "^4.0.3"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "author": "Andrew Salter",
   "license": "MIT"

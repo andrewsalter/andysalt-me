@@ -6,10 +6,4 @@
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
-        <url>
-        <loc>https://andysalt.me/posts/hello-world.html</loc>
-        <lastmod>Tue Feb 17 2026 19:00:00 GMT-0500 (Eastern Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
 </urlset>
